@@ -1,0 +1,275 @@
+/* ---------- 1. Colour and font variables (change these to re-theme the whole site) ---------- */
+:root {
+  --ink: #1f2040;
+  --muted: #5c5f85;
+  --bg: #f3f1fa;
+  --surface: #ffffff;
+  --brand: #2b2d6e;
+  --accent: #f2b134;
+  --accent-soft: #fdf1d6;
+  --heading-font: "Bricolage Grotesque", Arial, sans-serif;
+  --body-font: "Source Sans 3", Arial, sans-serif;
+}
+
+/* ---------- 2. Element selectors: base styles ---------- */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem; /* stops the sticky navbar covering section headings */
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+h1, h2, h3 {
+  font-family: var(--heading-font);
+  line-height: 1.2;
+}
+
+h2 {
+  font-size: 1.9rem;
+  color: var(--brand);
+  margin-bottom: 1.2rem;
+}
+
+a {
+  color: var(--brand);
+}
+
+a:focus-visible,
+.btn:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ---------- 3. Navigation bar (flexbox + sticky positioning) ---------- */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.9rem 2rem;
+  background: var(--brand);
+}
+
+.logo {
+  font-family: var(--heading-font);
+  font-weight: 800;
+  font-size: 1.3rem;
+  color: #fff;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.3rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  padding-bottom: 2px;
+  border-bottom: 2px solid transparent;
+}
+
+.nav-links a:hover {
+  border-bottom-color: var(--accent);
+}
+
+/* ---------- 4. Hero (flexbox layout) ---------- */
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2.5rem;
+  padding: 4rem 2rem;
+  background: var(--brand);
+  color: #fff;
+}
+
+.profile-pic {
+  width: 180px;
+  height: 180px;
+  flex-shrink: 0;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid var(--accent);
+}
+
+/* Initials badge, used until you add a photo */
+.initials {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--accent-soft);
+  color: var(--brand);
+  font-family: var(--heading-font);
+  font-weight: 800;
+  font-size: 3.4rem;
+}
+
+.hero-text {
+  max-width: 520px;
+}
+
+.hero h1 {
+  font-size: 2.8rem;
+  font-weight: 800;
+}
+
+.tagline {
+  margin: 0.8rem 0 1.5rem;
+  color: #d9d9f2;
+}
+
+/* ---------- 5. Class selector: reusable button ---------- */
+.btn {
+  display: inline-block;
+  padding: 0.7rem 1.6rem;
+  background: var(--accent);
+  color: var(--ink);
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.btn:hover {
+  background: #ffc857;
+}
+
+/* ---------- 6. Sections ---------- */
+.section {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 3.5rem 2rem 1rem;
+}
+
+/* ---------- 7. Cards (CSS grid) ---------- */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.2rem;
+}
+
+.card {
+  background: var(--surface);
+  padding: 1.4rem;
+  border-radius: 10px;
+  border-left: 5px solid var(--brand);
+}
+
+.card h3 {
+  font-size: 1.15rem;
+  margin-bottom: 0.4rem;
+}
+
+.card p,
+.card li {
+  color: var(--muted);
+  font-size: 1rem;
+}
+
+.card ul {
+  padding-left: 1.1rem;
+}
+
+.card li + li {
+  margin-top: 0.3rem;
+}
+
+.card.featured {
+  border-left-color: var(--accent);
+}
+
+.score {
+  margin-top: 0.3rem;
+  font-family: var(--heading-font);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--brand);
+}
+
+/* ---------- 8. Olympiad table ---------- */
+.table-wrap {
+  overflow-x: auto; /* table scrolls sideways on small screens instead of breaking the page */
+  background: var(--surface);
+  border-radius: 10px;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 1rem;
+}
+
+th, td {
+  padding: 0.8rem 1rem;
+  text-align: left;
+  border-bottom: 1px solid #e4e2f3;
+}
+
+th {
+  background: var(--brand);
+  color: #fff;
+  font-family: var(--heading-font);
+  font-weight: 600;
+}
+
+tbody tr:last-child td {
+  border-bottom: none;
+}
+
+tr.highlight td {
+  background: var(--accent-soft);
+}
+
+/* ---------- 9. ID selector: used once for the contact section ---------- */
+#contact {
+  padding-bottom: 3.5rem;
+}
+
+/* ---------- 10. Footer ---------- */
+.footer {
+  text-align: center;
+  padding: 1.5rem;
+  background: var(--brand);
+  color: #d9d9f2;
+  font-size: 0.95rem;
+}
+
+/* ---------- 11. Mobile ---------- */
+@media (max-width: 800px) {
+  .navbar {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.4rem 1rem;
+  }
+  .hero {
+    flex-direction: column;
+    text-align: center;
+  }
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+  html {
+    scroll-padding-top: 9rem;
+  }
+}
